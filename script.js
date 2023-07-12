@@ -32,8 +32,7 @@ function createProduct(element, condition) {
 // щоб записати масив у локал.пам -> JSON.stringify
       localStorage.setItem("bouth-products", JSON.stringify(prodInfo));
      
-      window.location.href =
-        "file:///D:/%D1%88%D0%B0%D1%80%D0%BF%D0%B8.%20%D0%BA%D1%83%D1%80%D1%81/svatCards/card.html";
+      window.location.href = "file:///D:/sharpMinds/svatCardsOnlineShop/onlineShop/card.html";
     });
 
     product.classList.add("product");
