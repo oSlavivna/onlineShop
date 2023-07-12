@@ -17,11 +17,13 @@ productImg.classList.add("image");
 productName.classList.add("product-name");
 price.classList.add("price");
 // вирізаю лінк на першу картинку
-let firstImg = parseCard[2];
-let splits = firstImg.split(',', 1); // 'object'
-console.log(splits);
+let arrCardImg = parseCard[2];
+let firstImg = arrCardImg.split(',')
+console.log(firstImg);
+// let splits = firstImg.split(',', 1); // typeOf'object'-cut 1 link 
+// productImg.src = splits;
 //
-productImg.src = splits;
+productImg.src = firstImg[0];
 productName.textContent = parseCard[0]; //
 price.textContent = parseCard[1]; //
 
