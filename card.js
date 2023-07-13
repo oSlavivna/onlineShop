@@ -2,6 +2,7 @@
 // let storagePrice = localStorage.getItem("basket-price");
 // let storageImg = localStorage.getItem("basket-img");
 // let parseImg = JSON.parse(storageImg)
+const yourCards = document.querySelector('.your-cards');
 
 let storageCard = localStorage.getItem("bouth-products");
 let parseCard = JSON.parse(storageCard);
@@ -34,7 +35,7 @@ product.appendChild(productImg);
 product.appendChild(productName);
 product.appendChild(price);
 
-document.querySelector("body").appendChild(product);
+yourCards.appendChild(product);
 
 }
  

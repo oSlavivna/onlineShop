@@ -28,7 +28,7 @@ function createProduct(element, condition) {
       const price = addToCart.getAttribute("data-basket-price");
       const imgs = addToCart.getAttribute("data-basket-img");
 
-      const prodInfo = [title, price, imgs]; //
+      const prodInfo = [title, price, imgs]; 
       cardArr.push(prodInfo)
       // console.log(cardArr);
 // щоб записати масив у локал.пам -> JSON.stringify
