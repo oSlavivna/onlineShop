@@ -1,7 +1,7 @@
 let APIurl = "https://dummyjson.com/products/";
 
 let arr;
-
+let cardArr = []
 let category = "all";
 let price = 2000;
 
@@ -28,10 +28,12 @@ function createProduct(element, condition) {
       const price = addToCart.getAttribute("data-basket-price");
       const imgs = addToCart.getAttribute("data-basket-img");
 
-      const prodInfo = [title, price, imgs];
+      const prodInfo = [title, price, imgs]; //
+      cardArr.push(prodInfo)
+      // console.log(cardArr);
 // щоб записати масив у локал.пам -> JSON.stringify
-      localStorage.setItem("bouth-products", JSON.stringify(prodInfo));
-     
+      localStorage.setItem("bouth-products", JSON.stringify(cardArr)); 
+    
       window.location.href = "file:///D:/sharpMinds/svatCardsOnlineShop/onlineShop/card.html";
     });
 
@@ -53,7 +55,8 @@ function createProduct(element, condition) {
 
     mainDiv.appendChild(product);
   }
-}
+} // end createProduct
+
 
 // display all products and category buttons after page load
 arrCategory = [];
