@@ -1,7 +1,14 @@
 let APIurl = "https://dummyjson.com/products/";
 
 let arr;
-let cardArr = []
+let cardArr = [];
+
+if (localStorage.getItem("bouth-products")) {
+  cardArr = JSON.parse(localStorage.getItem("bouth-products"));
+} else {
+  cardArr = [];
+}
+
 let category = "all";
 let price = 2000;
 
@@ -15,26 +22,32 @@ function createProduct(element, condition) {
     const product = document.createElement("div");
     product.setAttribute("data-category", element.category);
     const productImg = document.createElement("img");
+    const addToCartLink = document.createElement("a");
+    addToCartLink.href =
+      "./card.html?title=" + element.title + "&price=" + element.price + "&image=" + element.images[0];
     const addToCart = document.createElement("img");
-      addToCart.style.cursor = "pointer";
-      addToCart.setAttribute("data-basket-title", element.title);
-      addToCart.setAttribute("data-basket-price", element.price);
-      addToCart.setAttribute("data-basket-img", element.images);
+    addToCart.style.cursor = "pointer";
+    addToCart.setAttribute("data-basket-title", element.title);
+    addToCart.setAttribute("data-basket-price", element.price);
+    addToCart.setAttribute("data-basket-img", element.images);
     const productName = document.createElement("p");
     const price = document.createElement("p");
 
     addToCart.addEventListener("click", () => {
+      // event.preventDefault();      
+
       const title = addToCart.getAttribute("data-basket-title");
       const price = addToCart.getAttribute("data-basket-price");
       const imgs = addToCart.getAttribute("data-basket-img");
 
-      const prodInfo = [title, price, imgs]; 
-      cardArr.push(prodInfo)
+      if (title !== null && price !== null && imgs !== null) {
+      const prodInfo = [title, price, imgs];
+      cardArr.push(prodInfo);
       // console.log(cardArr);
-// щоб записати масив у локал.пам -> JSON.stringify
-      localStorage.setItem("bouth-products", JSON.stringify(cardArr)); 
-    
-      window.location.href = "file:///D:/sharpMinds/svatCardsOnlineShop/onlineShop/card.html";
+      // щоб записати масив у локал.пам -> JSON.stringify     
+      localStorage.setItem("bouth-products", JSON.stringify(cardArr));
+      }
+      // window.location.href = "file:///D:/sharpMinds/svatCardsOnlineShop/onlineShop/card.html";
     });
 
     product.classList.add("product");
@@ -49,13 +62,28 @@ function createProduct(element, condition) {
     price.textContent = element.price;
 
     product.appendChild(productImg);
-    product.appendChild(addToCart);
+    product.appendChild(addToCartLink);
+    addToCartLink.appendChild(addToCart);
     product.appendChild(productName);
     product.appendChild(price);
 
     mainDiv.appendChild(product);
   }
-} // end createProduct
+} // end createProduct 
+//my edit
+const baske = document.querySelector("#baske span");
+let parseCard = [];
+if (localStorage.getItem("bouth-products")) {
+  let storageCard = localStorage.getItem("bouth-products");
+  parseCard = JSON.parse(storageCard);
+  // parseCard.push(newProduct);
+  localStorage.setItem("bouth-products", JSON.stringify(parseCard));
+  baske.textContent = parseCard.length;
+} else {
+  // parseCard.push(newProduct);
+  localStorage.setItem("bouth-products", JSON.stringify(parseCard));
+} 
+// baske.textContent = parseCard.length ;
 
 
 // display all products and category buttons after page load
@@ -79,7 +107,8 @@ fetch(APIurl)
       button.id = "button-" + i;
       button.innerText = categoryElement;
       container.appendChild(button);
-      button.classList.add("category-btn");
+      // button.classList.add("category-btn");
+      button.classList.add("like-btn");
 
       button.addEventListener("click", (event) => {
         category = document.getElementById(event.target.id).textContent;
@@ -113,7 +142,6 @@ fetch(APIurl)
   });
 
 // filter products by price
-
 const rangeInput = document.getElementById("myRange");
 rangeInput.addEventListener("change", function () {
   const rangeValue = rangeInput.value;
@@ -145,11 +173,11 @@ rangeInput.addEventListener("change", function () {
 });
 
 // display all cathegories button
-
 const allCategories = document.createElement("button");
 allCategories.innerText = "all categories";
 container.appendChild(allCategories);
-allCategories.classList.add("category-btn");
+allCategories.classList.add("like-btn");
+//allCategories.classList.add("category-btn");
 allCategories.addEventListener("click", () => {
   category = "all";
   const products = document.querySelectorAll(".product");

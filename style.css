@@ -3,11 +3,14 @@
    padding: 0;
    box-sizing: border-box;
 }
-
+ 
 body {
    padding: 1rem;
    font-family: "Nunito sans";
    background-color: rgb(225, 251, 255);
+}
+a {
+ text-decoration: none;
 }
 
 .wrapper {
@@ -39,7 +42,7 @@ body {
 .add-to-card-btn {
    position: absolute;
    z-index: 1;
-   bottom: 53px;
+   bottom: 65px;
    right: 10px;
 }
 
@@ -53,8 +56,38 @@ body {
    font-size: 14px;
    font-weight: 700;
 }
-/* PAGE CARDS */
+/* my editts */
+.range-basket {
+   display: flex;
+   justify-content: space-between;
+   /* position: relative; */
+}
+#baske span{
+   background-color: #b0e1ff;
+   color: #fff;
+   border-radius: 50%;
+   padding: 10px;
+   font-size: small;
+   text-decoration: none;
+   position: relative;
+   right: 15px; 
+
+}
+/* PAGE CARDS/////////////////// */
 .your-cards {
  display: flex;
  gap: 1rem;
+ flex-wrap: wrap;
 }
+.like-btn {
+font-family: inherit;
+text-decoration: none;
+border: none;
+font-weight: 800;
+color: #fff;
+margin: 5px;
+padding: 5px 25px;
+background-color: darkblue;
+border-radius: 15px;
+}
+ 
