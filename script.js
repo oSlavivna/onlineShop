@@ -2,9 +2,11 @@ let APIurl = "https://dummyjson.com/products/";
 
 let arr;
 let cardArr = [];
-
+// const basketaIcon = document.querySelector('.basketa-Icon');
 if (localStorage.getItem("bouth-products")) {
   cardArr = JSON.parse(localStorage.getItem("bouth-products"));
+  // basketaIcon.classList.add('full-basket')
+  // basketaIcon.textContent = cardArr.length;
 } else {
   cardArr = [];
 }
@@ -24,7 +26,12 @@ function createProduct(element, condition) {
     const productImg = document.createElement("img");
     const addToCartLink = document.createElement("a");
     addToCartLink.href =
-      "./card.html?title=" + element.title + "&price=" + element.price + "&image=" + element.images[0];
+      "./card.html?title=" +
+      element.title +
+      "&price=" +
+      element.price +
+      "&image=" +
+      element.images;
     const addToCart = document.createElement("img");
     addToCart.style.cursor = "pointer";
     addToCart.setAttribute("data-basket-title", element.title);
@@ -34,18 +41,17 @@ function createProduct(element, condition) {
     const price = document.createElement("p");
 
     addToCart.addEventListener("click", () => {
-      // event.preventDefault();      
-
+      // event.preventDefault();
       const title = addToCart.getAttribute("data-basket-title");
       const price = addToCart.getAttribute("data-basket-price");
       const imgs = addToCart.getAttribute("data-basket-img");
 
       if (title !== null && price !== null && imgs !== null) {
-      const prodInfo = [title, price, imgs];
-      cardArr.push(prodInfo);
-      // console.log(cardArr);
-      // щоб записати масив у локал.пам -> JSON.stringify     
-      localStorage.setItem("bouth-products", JSON.stringify(cardArr));
+        const prodInfo = [title, price, imgs];
+        cardArr.push(prodInfo);
+        // щоб записати масив у локал.пам -> JSON.stringify
+        localStorage.setItem("bouth-products", JSON.stringify(cardArr));
+        // baske.textContent = cardArr.length;
       }
       // window.location.href = "file:///D:/sharpMinds/svatCardsOnlineShop/onlineShop/card.html";
     });
@@ -69,22 +75,19 @@ function createProduct(element, condition) {
 
     mainDiv.appendChild(product);
   }
-} // end createProduct 
+} // end createProduct
 //my edit
+//     ////////////////baske.textContent = parseCard.length ;
 const baske = document.querySelector("#baske span");
 let parseCard = [];
 if (localStorage.getItem("bouth-products")) {
   let storageCard = localStorage.getItem("bouth-products");
   parseCard = JSON.parse(storageCard);
-  // parseCard.push(newProduct);
   localStorage.setItem("bouth-products", JSON.stringify(parseCard));
   baske.textContent = parseCard.length;
 } else {
-  // parseCard.push(newProduct);
   localStorage.setItem("bouth-products", JSON.stringify(parseCard));
-} 
-// baske.textContent = parseCard.length ;
-
+}
 
 // display all products and category buttons after page load
 arrCategory = [];
@@ -194,3 +197,48 @@ allCategories.addEventListener("click", () => {
     }
   }
 });
+
+// slaider from lesson 22 07
+let sliderElements = document.querySelectorAll('.sliderElement');
+// sliderElements[1].style.translate = "200px";
+// sliderElements[1].style.display = "block";
+index = 1;
+
+setInterval(() => {
+  if (index < sliderElements.length) {
+    for (let index = 0; index < sliderElements.length; index++) {
+      sliderElements[index].style.translate = "200px";
+      sliderElements[index].style.display = "block";
+    }
+    sliderElements[index].style.translate = "0";
+    index++;
+  } else {
+    for (let index = 0; index < sliderElements.length; index++) {
+      sliderElements[index].style.translate = "200px";
+    }
+    sliderElements[0].style.translate = "0";
+    index = 1;
+  }
+}, 2000);
+
+// home manual slider
+let ofset = 0 //move from left
+const sliderLine = document.querySelector('.slider-line');
+
+const btnNext = document.querySelector('.btnext');
+btnNext.addEventListener('click', () => {
+  ofset += 200
+  if (ofset > 600 ){
+ofset = 0
+  }
+  sliderLine.style.left =  -ofset + 'px'
+})
+
+const btnPrev = document.querySelector('.btnprev');
+btnPrev.addEventListener('click', () => {
+  ofset -= 200
+  if (ofset < 0 ){
+ofset = 600
+  }
+  sliderLine.style.left =  -ofset + 'px'
+})

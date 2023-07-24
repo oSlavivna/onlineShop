@@ -1,93 +1,162 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
- 
+
 body {
-   padding: 1rem;
-   font-family: "Nunito sans";
-   background-color: rgb(225, 251, 255);
+  padding: 1rem;
+  font-family: "Nunito sans";
+  background-color: rgb(225, 251, 255);
 }
 a {
- text-decoration: none;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
 }
 
 .wrapper {
-   max-width: 1024px;
-   margin: 0 auto;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 .main-div {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 40px;
-   margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 20px;
 }
 
 .product {
-   width: 157px;
-   position: relative;
-   border: 1px rgb(96, 96, 96, 1) solid;
-   border-radius: 15px ;
-   padding: 15px;
+  width: 157px;
+  position: relative;
+  border: 1px rgb(96, 96, 96, 1) solid;
+  border-radius: 15px;
+  padding: 15px;
 }
 
 .image {
-   border-radius: 10px;
-   width: 100%;
-   height: 222px;
-   object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  height: 222px;
+  object-fit: cover;
 }
 
 .add-to-card-btn {
-   position: absolute;
-   z-index: 1;
-   bottom: 65px;
-   right: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 65px;
+  right: 10px;
 }
 
 .product-name {
-   font-size: 14px;
-   color: rgba(96, 96, 96, 1);
+  font-size: 14px;
+  color: rgba(96, 96, 96, 1);
 }
 
 .price {
-   color: rgba(48, 48, 48, 1);
-   font-size: 14px;
-   font-weight: 700;
+  color: rgba(48, 48, 48, 1);
+  font-size: 14px;
+  font-weight: 700;
 }
 /* my editts */
 .range-basket {
-   display: flex;
-   justify-content: space-between;
-   /* position: relative; */
+  display: flex;
+  justify-content: space-between;
+  /* position: relative; */
 }
-#baske span{
-   background-color: #b0e1ff;
+#baske span {
+  background-color: #b0e1ff;
+  color: #fff;
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 10px;
+  text-decoration: none;
+  position: relative;
+  right: 15px;
+}
+/* .basketa-Icon {
+   background-color: rgb(20, 20, 20); 
+   width: 50px;
+   height: 50px;
    color: #fff;
-   border-radius: 50%;
-   padding: 10px;
-   font-size: small;
-   text-decoration: none;
-   position: relative;
-   right: 15px; 
-
 }
+ .full-basket {
+   color: #fff;
+   background-color: rgb(42, 165, 99);
+ }
+  */
+/* слайдер з параграфів  */
+.slider {
+  position: relative;
+  width: 200px;
+  height: 240px;
+  border: 1px solid grey;
+  overflow: hidden;
+}
+.sliderElement {
+  font-size: 120px;
+  line-height: 0px;
+  position: absolute;
+  transition: all 1s;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%);
+  display: none;
+}
+/* home manual slider */
+.containeR {
+  text-align: center;
+  background-color: rgb(10, 59, 101);
+}
+.slideR {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.slider-line {
+  height: 200px;
+  width: 800px;
+  background: rgb(60, 203, 255);
+  display: flex;
+  position: relative;
+  left: 0;
+  transition: all ease 1s;
+}
+.slider-line > img {
+  width: 200px;
+  height: auto;
+}
+button {
+  padding-inline: 20px;
+  background: none;
+  border: 1px solid rgb(255, 255, 255);
+  font-family: inherit;
+  border-radius: 4px;
+}
+button:hover {
+  background: orange;
+}
+button:active {
+  background: cadetblue;
+  color: #fff;
+}
+
 /* PAGE CARDS/////////////////// */
 .your-cards {
- display: flex;
- gap: 1rem;
- flex-wrap: wrap;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 .like-btn {
-font-family: inherit;
-text-decoration: none;
-border: none;
-font-weight: 800;
-color: #fff;
-margin: 5px;
-padding: 5px 25px;
-background-color: darkblue;
-border-radius: 15px;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  font-weight: 800;
+  color: #fff;
+  margin: 5px;
+  padding: 5px 25px;
+  background-color: darkblue;
+  border-radius: 15px;
 }
- 

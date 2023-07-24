@@ -33,14 +33,18 @@ let parseCard = [];
 
 if (localStorage.getItem("bouth-products")) {
   let storageCard = localStorage.getItem("bouth-products");
-  parseCard = JSON.parse(storageCard);
-  parseCard.push(newProduct);
-  console.log(parseCard);
+  parseCard = JSON.parse(storageCard); //
+  if (newProduct[0] !== undefined) {
+    parseCard.push(newProduct);
+    console.log(parseCard);
+  } //
   localStorage.setItem("bouth-products", JSON.stringify(parseCard));
 } else {
-  parseCard.push(newProduct);
+  // if (newProduct[0] !== undefined) {
+  // parseCard.push(newProduct);
   localStorage.setItem("bouth-products", JSON.stringify(parseCard));
-} 
+  // }
+}
 
 // наповнюємо/створюємо карточку
 for (let index = 0; index < parseCard.length; index++) {
@@ -50,25 +54,56 @@ for (let index = 0; index < parseCard.length; index++) {
   const productImg = document.createElement("img");
   const productName = document.createElement("p");
   const price = document.createElement("p");
+  const images = document.createElement("div");
 
   product.classList.add("product");
   productImg.classList.add("image");
+  images.classList.add("images");
   productName.classList.add("product-name");
   price.classList.add("price");
+
   // вирізаю лінк на першу картинку
-  let arrCardImg = element[2];
+  let arrCardImg = element[2]; //
   let firstImg = arrCardImg.split(",");
-  // console.log(firstImg);
-  // let splits = firstImg.split(',', 1); // typeOf'object'-cut 1 link
-  // productImg.src = splits;
   //
-  productImg.src = firstImg[0];
+  for (let index = 0; index < firstImg.length; index++) {
+    const element = firstImg[index];
+    const image = document.createElement("img");
+    image.src = element;
+    images.appendChild(image);
+  }
+  //
+  productImg.src = firstImg[0]; // це для головної картинки
+  //
   productName.textContent = element[0]; //
   price.textContent = element[1]; //
 
   product.appendChild(productImg);
+  product.appendChild(images);
   product.appendChild(productName);
   product.appendChild(price);
 
   yourCards.appendChild(product);
 }
+
+////slider
+const images = document.querySelectorAll(".images");
+const sliderImages = images[2].children;
+let index = 1;
+sliderImages[0].style.display = "block";
+
+setInterval(() => {
+  if (index < sliderImages.length) {
+    for (let index = 0; index < sliderImages.length; index++) {
+      sliderImages[index].style.display = "none";
+    }
+    sliderImages[index].style.display = "block";
+    index++;
+  } else {
+    for (let index = 0; index < sliderImages.length; index++) {
+      sliderImages[index].style.display = "none";
+    }
+    sliderImages[0].style.display = "block";
+    index = 1;
+  }
+}, 2000);
